@@ -49,6 +49,16 @@ save(list = PREFACE.lst,
 ### UNIVERSAL OBJECTS ~ COSMOS ----
 ### ************************************
 
+# this section contains items that are universal across sections/plots/datasets
+
+# Life Aquatic with Steve Zissou custom color palettes
+ziss_blue <- c("#218ec4", "#2ca1db", "#67bbe5", "#92ceec", "#e9f5fb", "#ffffff")
+ziss_navy <- c("#0f1b3e", "#192e67", "#2d52b9", "#466cd2", "#eaeffa", "#ffffff")
+ziss_reds <- c("#b31300", "#f21a00", "#ff604d", "#ffbbb3", "#ffe8e5", "#ffffff")
+ziss_ylow <- c("#fec72A", "#fede80", "#ffebb3", "#fff8e6", "#ffffff")
+ziss_teal <- c("#285854", "#489e97", "#84c7c2", "#cae7e5", "#edf7f6", "#ffffff") 
+ziss_grey <- c("#252525", "#3d3d3d", "#c4c4c4", "#d9d9d9", "#e9e9e9", "#ffffff")
+
 # hex codes for a gradient of black/grey/white (left to right = dark to light)
 greydient <- c("#000000", "#252525", "#525252",
                "#969696", "#bbbbbb", "#d9d9d9", "#e0e0e0", 
@@ -57,15 +67,9 @@ greydient <- c("#000000", "#252525", "#525252",
 # font family
 fnt <- "Courier"
 
-# "#192e67" # Zissou navy
-# "#2ca1db" # Zissou blue
-# "#f21a00" # Zissou red
-# "#fec72A" # Zissou yellow (variant)
-# "#489e97" # Zissou teal (variant)
-# "#969696" # Zissou grey
-
 # create a vector naming all of the above (useful when saving workspaces)
-cosmos <- c("greydient", "fnt")
+cosmos <- c("ziss_blue", "ziss_navy", "ziss_reds", "ziss_ylow", "ziss_teal", 
+            "ziss_grey", "greydient", "fnt")
 
 # save universal objects workspace
 COSMOS <- c(cosmos, "COSMOS")
@@ -292,10 +296,10 @@ T.tch <- rbind(T.PSU, T.WYO, T.CSU, T.FRC)
 ### ************************************
 
 # bars: fill parameters
-T.hex_UTA <- "#f21a00"
-T.hex_GTA <- "#67bbe5"
+T.hex_UTA <- ziss_reds[2]
+T.hex_GTA <- ziss_blue[3]
 T.hex_lec <- "#142962"
-T.hex_Ins <- "#fec72A"
+T.hex_Ins <- ziss_ylow[1]
 T.hex_typ <- c(T.hex_UTA, T.hex_GTA, T.hex_lec, T.hex_Ins)
 
 # points: color, fill, and shape parameters
@@ -444,8 +448,10 @@ T.gga <- ggarrange(T.gpr_lgn, T.gpr, labels = NULL, ncol = 1, nrow = 2,
 ggsave(device = "pdf", dpi = 600, units = "mm", width = 75, height = 75,
        filename = T.ofv_plot_teaching, plot = T.gga)
 
-T.obj <- c(ls(pattern = "T."), PREFACE, COSMOS)
-save(list = T.obj, file = T.ofv_wksp)
+T.obj <- ls(pattern = "T.")
+T.lst <- c(T.obj[grep(pattern = "T.", x = T.obj, ignore.case = F, fixed = T)],
+           PREFACE.lst)
+save(list = T.lst, file = T.ofv_wksp)
 
 ### ************************************
 ### M - Step 1: create the data ----
@@ -488,9 +494,9 @@ M.yyxt <- -0.55 # y for year labels
 ### ************************************
 
 # color and shape parameters
-M.hex_undg <- "#489e97"
-M.hex_grad <- "#969696"
-M.hex_othr <- "#fec72A"
+M.hex_undg <- ziss_teal[2]
+M.hex_grad <- greydient[4]
+M.hex_othr <- ziss_ylow[1]
 M.hex_grp <- c(M.hex_undg, M.hex_grad, M.hex_othr)
 M.fil_grp <- c(M.hex_undg, M.hex_grad, M.hex_othr)
 M.shp_grp <- c(22, 23, 21)
@@ -580,8 +586,10 @@ M.ggp <- ggplot(data = M.ment) +
 ggsave(device = "pdf", dpi = 600, units = "mm", width = 125, height = 49,
        filename = M.ofv_plot_mentorship, plot = M.ggp)
 
-M.obj <- c(ls(pattern = "M."), PREFACE, COSMOS)
-save(list = M.obj, file = M.ofv_wksp)
+M.obj <- ls(pattern = "M.")
+M.lst <- c(M.obj[grep(pattern = "M.", x = M.obj, ignore.case = F, fixed = T)],
+           PREFACE.lst)
+save(list = M.lst, file = M.ofv_wksp)
 
 ### ************************************
 ### S - Step 1: do it all ----
@@ -596,10 +604,10 @@ S.serv_0 <- data.frame("num" = c(1, 6, 3, 2),
 S.lvls <- c("CSU", "WY", "UW", "CO")
 S.serv_1 <- S.serv_0
 S.serv_1$org <- factor(S.serv_1$org, levels = S.lvls)
-S.hec_CSU <- "#489e97" # Zissou teal (variant)
-S.hex_WY <- "#f21a00" # Zissou red
-S.hex_UW <- "#fec72A" # Zissou yellow (variant)
-S.hex_CO <- "#192e67" # Zissou navy
+S.hec_CSU <- ziss_teal[2]
+S.hex_WY <- ziss_reds[2]
+S.hex_UW <- ziss_ylow[1]
+S.hex_CO <- ziss_navy[2]
 S.fil_org <- c(S.hec_CSU, S.hex_WY, S.hex_UW, S.hex_CO)
 S.pie_lab <- rep("", times = 4)
 S.sze_lne <- 1.95
@@ -619,8 +627,10 @@ S.gpr <- ggpie(data = S.serv_1, x = "num", label = S.pie_lab, font.family = fnt,
 ggsave(device = "pdf", dpi = 600, units = "mm", width = 81, height = 81,
        filename = S.ofv_plot_service, plot = S.gpr)
 
-S.obj <- c(ls(pattern = "S."), PREFACE, COSMOS)
-save(list = S.obj, file = S.ofv_wksp)
+S.obj <- ls(pattern = "S.")
+S.lst <- c(S.obj[grep(pattern = "S.", x = S.obj, ignore.case = F, fixed = T)],
+           PREFACE.lst)
+save(list = S.lst, file = S.ofv_wksp)
 
 ### ************************************
 ### EPILOGUE ----
