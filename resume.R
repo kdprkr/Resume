@@ -2,7 +2,7 @@
 ### PREFACE ----
 ### ************************************
 
-# ** note for KDP: PREFACE version 0.1 ** #
+# ** note for KDP: PREFACE version 0.2 ** #
 
 # configure the script
 # NOTE: my machine runs MacOS; paths have not been tested on other platforms
@@ -14,23 +14,27 @@ name_scrpt <- "resume.R" # script filename
 name_projd <- "resume" # name of project directory
 path_projd <- paste(sep = "", getwd(), "/", name_projd) # path to project dir
 path_vault <- paste(sep = "", path_projd, "/vault") # path to vault (storage)
+wksp_extsn <- paste(sep = "", name_projd, ".Rdata") # recyclable ext for outputs
+info_extsn <- paste(sep = "", name_projd, ".txt") # recyclable ext for outputs
 PREFACE <- c("date_ofrun","name_scrpt", "name_projd", "path_projd", 
-             "path_vault")
+             "path_vault", "wksp_extsn", "info_extsn")
 
 # paths for outputs stored in the central "/vault" (ofv = output file to vault)
-ofv_COSMOS_wksp <- paste(sep = "", path_vault, "/WS_COSMOS.RData")
-I.ofv_info <- paste(sep = "", path_vault, "/info_Section_I.txt")
-I.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_I.RData")
+ofv_COSMOS_wksp <- paste(sep = "", path_vault, "/WS_COSMOS_", wksp_extsn)
+I.ofv_info <- paste(sep = "", path_vault, "/info_Section_I_", info_extsn)
+I.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_I_", wksp_extsn)
 T.ofv_plot_teaching <- paste(sep = "", path_vault, "/plot_teaching.pdf")
-T.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_T.RData")
+T.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_T_", wksp_extsn)
 M.ofv_plot_mentorship <- paste(sep = "", path_vault, "/plot_mentorship.pdf")
-M.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_M.RData")
+M.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_M_", wksp_extsn)
 S.ofv_plot_service <- paste(sep = "", path_vault, "/plot_service.pdf")
-S.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_S.RData")
-ofv_scrpt_wksp <- paste(sep = "", path_vault, "/WS_", name_projd, ".RData")
+S.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_S_", wksp_extsn)
+ofv_scrpt_wksp <- paste(sep = "", path_vault, "/WS_", wksp_extsn)
 
 # save PREFACE workspace
-save.image(file = paste(sep = "", path_vault, "/WS_PREFACE.RData"))
+PREFACE.lst <- c(ls(pattern = "ofv"), PREFACE, "PREFACE", "PREFACE.lst")
+save(list = PREFACE.lst,
+     file = paste(sep = "", path_vault, "/WS_PREFACE_", wksp_extsn))
 
 # description of sections:
 # PREFACE: configure the script
