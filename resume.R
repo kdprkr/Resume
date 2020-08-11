@@ -17,9 +17,6 @@ path_vault <- paste(sep = "", path_projd, "/vault") # path to vault (storage)
 PREFACE <- c("date_ofrun","name_scrpt", "name_projd", "path_projd", 
              "path_vault")
 
-# *gasp*
-setwd("~/Desktop/")
-
 # paths for outputs stored in the central "/vault" (ofv = output file to vault)
 ofv_COSMOS_wksp <- paste(sep = "", path_vault, "/WS_COSMOS.RData")
 I.ofv_info <- paste(sep = "", path_vault, "/info_Section_I.txt")
