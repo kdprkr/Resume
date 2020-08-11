@@ -1,5 +1,5 @@
 "category"	"info"	"value"	"script"	"section"
-"project"	"date script was run"	"(December 10, 2019 (12-10-19)"	"resume.R"	"all"
+"project"	"date script was run"	"(August 11, 2020 (08_11_20)"	"resume.R"	"all"
 "project"	"name of project directory"	"resume"	"resume.R"	"all"
 "machine"	"OS"	"macOS Catalina 10.15.6"	"resume.R"	"all"
 "machine"	"processor"	"Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz"	"resume.R"	"all"
