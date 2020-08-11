@@ -75,14 +75,16 @@ save(list = COSMOS, file = ofv_COSMOS_wksp)
 ### I - MACHINE/PACKAGE/VERSION Info ----
 ### ************************************
 
-# NOTE: this section requires objects from the PREFACE to be in the environment
-
-# R packages accessed via namespace:
-# benchmarkme
+# NOTE: section I requires objects from the PREFACE to be in the environment
+# ** note for KDP: section I version 0.2 ** #
 
 # R packages accessed via require:
 require(ggplot2, quietly = T)
 require(ggpubr, quietly = T)
+
+# R packages accessed via namespace:
+# benchmarkme
+# dplyr
 
 # capture R package-related information:
 I.Rpac_ctg <- "R package version"
@@ -237,13 +239,16 @@ I.RStudio <- data.frame(info = "version",
                         section = "all", stringsAsFactors = F)
 
 # rbind all of the above data.frames together and write outputs
-I.info <- rbind(I.project, I.machine, I.pathsto, I.baseRpl, I.RStudio, I.Rpackge)
+I.info <- rbind(I.project, I.machine, I.pathsto, I.baseRpl, I.RStudio, 
+                I.Rpackge)
 
 # outputs to the vault
 write.table(sep = "\t", row.names = F, x = I.info, file = I.ofv_info)
 
-I.obj <- c(ls(pattern = "I."), PREFACE, "captureVersions")
-save(list = I.obj, file = I.ofv_wksp)
+I.obj <- ls(pattern = "I.")
+I.lst <- c(I.obj[grep(pattern = "I.", x = I.obj, ignore.case = F, fixed = T)],
+           PREFACE.lst, "captureVersions")
+save(list = I.lst, file = I.ofv_wksp)
 
 ### ************************************
 ### T - Step 1: create the data ----
