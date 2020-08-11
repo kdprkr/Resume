@@ -2,7 +2,6 @@
 
 This repository houses materials used to create my graphical resume. <br/>
 
-
 ## Overview
 `obsolete/` = contains older versions of my resume and R code <br/>
 `vault/` = central storage for items produced in each of the .R scripts 
