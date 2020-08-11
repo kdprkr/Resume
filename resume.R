@@ -27,7 +27,7 @@ M.ofv_plot_mentorship <- paste(sep = "", path_vault, "/plot_mentorship.pdf")
 M.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_M.RData")
 S.ofv_plot_service <- paste(sep = "", path_vault, "/plot_service.pdf")
 S.ofv_wksp <- paste(sep = "", path_vault, "/WS_Section_S.RData")
-ofv_resume_wksp <- paste(sep = "", path_vault, "/WS_resume.RData")
+ofv_scrpt_wksp <- paste(sep = "", path_vault, "/WS_", name_projd, ".RData")
 
 # save PREFACE workspace
 save.image(file = paste(sep = "", path_vault, "/WS_PREFACE.RData"))
@@ -618,4 +618,4 @@ save(list = S.obj, file = S.ofv_wksp)
 ### ************************************
 
 # output to the vault
-save.image(file = ofv_resume_wksp)
+save.image(file = ofv_scrpt_wksp)
