@@ -1,6 +1,6 @@
 # Resume
 
-This repository houses materials used to create my graphical resume <br/>
+This repository houses materials used to create my graphical resume. <br/>
 
 
 ## Overview
